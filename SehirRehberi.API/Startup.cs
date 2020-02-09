@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SehirRehberi.API.Context;
+using SehirRehberi.API.Repositories;
+using SehirRehberi.API.Repositories.Entities;
 
 namespace SehirRehberi.API
 {
@@ -29,6 +31,7 @@ namespace SehirRehberi.API
         {
             services.AddDbContext<DataContext>(i => i.UseSqlServer(Configuration.GetConnectionString("SehirRehberi")));
             services.AddControllers();
+            services.AddScoped<IAppRepository, AppRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
