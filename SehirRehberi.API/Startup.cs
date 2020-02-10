@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using SehirRehberi.API.Context;
+using SehirRehberi.API.Helpers;
 using SehirRehberi.API.Repositories;
 using SehirRehberi.API.Repositories.Entities;
 using SehirRehberi.API.Repositories.Interfaces;
@@ -34,8 +35,9 @@ namespace SehirRehberi.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
+            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Secret").Value);
 
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddDbContext<DataContext>(i => i.UseSqlServer(Configuration.GetConnectionString("SehirRehberi")));
             services.AddAutoMapper();
             services.AddControllers().AddNewtonsoftJson(opt =>
