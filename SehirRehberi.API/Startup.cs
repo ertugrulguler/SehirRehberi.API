@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,7 @@ namespace SehirRehberi.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(i => i.UseSqlServer(Configuration.GetConnectionString("SehirRehberi")));
+            services.AddAutoMapper();
             services.AddControllers();
             services.AddScoped<IAppRepository, AppRepository>();
         }
