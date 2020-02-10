@@ -32,7 +32,10 @@ namespace SehirRehberi.API
         {
             services.AddDbContext<DataContext>(i => i.UseSqlServer(Configuration.GetConnectionString("SehirRehberi")));
             services.AddAutoMapper();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt =>
+            {
+                opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddScoped<IAppRepository, AppRepository>();
         }
 
