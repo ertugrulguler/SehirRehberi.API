@@ -18,6 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 using SehirRehberi.API.Context;
 using SehirRehberi.API.Repositories;
 using SehirRehberi.API.Repositories.Entities;
+using SehirRehberi.API.Repositories.Interfaces;
 
 namespace SehirRehberi.API
 {
@@ -42,6 +43,7 @@ namespace SehirRehberi.API
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
             services.AddScoped<IAppRepository, AppRepository>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
             {
                 opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
