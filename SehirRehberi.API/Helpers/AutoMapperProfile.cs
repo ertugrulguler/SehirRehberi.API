@@ -16,6 +16,8 @@ namespace SehirRehberi.API.Helpers
                {
                    opt.MapFrom(src => src.Photos.FirstOrDefault(i => i.IsMain == true).Url);
                });
+
+            CreateMap<City, CityDetailViewModel>();
         }
     }
 }
