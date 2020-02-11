@@ -26,6 +26,7 @@ namespace SehirRehberi.API.Repositories.Entities
         public void Delete<T>(T entity) where T : class
         {
             _db.Remove(entity);
+            SaveAll();
         }
 
         public List<City> GetCities()
