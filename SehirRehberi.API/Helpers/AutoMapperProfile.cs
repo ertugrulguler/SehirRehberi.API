@@ -18,6 +18,9 @@ namespace SehirRehberi.API.Helpers
                });
 
             CreateMap<City, CityDetailViewModel>();
+            CreateMap<Photo, PhotoRequestViewModel>();
+            CreateMap<PhotoRequestViewModel, PhotoResponseViewModel>();
+
         }
     }
 }

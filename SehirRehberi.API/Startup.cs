@@ -42,6 +42,7 @@ namespace SehirRehberi.API
             services.AddAutoMapper();
             services.AddControllers().AddNewtonsoftJson(opt =>
             {
+                //birbirini çaðýran classlar sonsuz döngüye girerler o sýkýntyý ortadan kaldýrmak için kullanýlýr.
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
             services.AddScoped<IAppRepository, AppRepository>();
